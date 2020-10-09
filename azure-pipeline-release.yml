@@ -1,0 +1,21 @@
+pool:
+  name: Azure Pipelines
+  vmImage: 'vs2017-win2016'
+  # demands:
+  # - msbuild
+  # - visualstudio
+  # - vstest
+
+steps:
+- task: DownloadPipelineArtifact@2
+  inputs:
+    source: 'specific'
+    artifact: 'WebApp'
+    path: $(Build.SourcesDirectory)/drop
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy Azure App Service'
+  inputs:
+    azureSubscription: 'newconn01'
+    appType: 'webapp'
+    WebAppName: 'cicdevsecopsdemo'    
