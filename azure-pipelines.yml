@@ -1,90 +1,51 @@
-# trigger:
-# - dev
-
 pool:
-  name: Azure Pipelines
-  vmImage: 'vs2017-win2016'
-  # demands:
-  # - msbuild
-  # - visualstudio
-  # - vstest
-
-steps:
-- task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 4.4.1'
-  inputs:
-    versionSpec: 4.4.1
-
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
-  inputs:
-    restoreSolution: 'WebApplication/*.sln'
-
-- task: VSBuild@1
-  displayName: 'Build solution **\*.sln'
-  inputs:
-    #solution: '$(Parameters.solution)'
-    solution: 'WebApplication/*.sln'
-    msbuildArgs: '/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl="$(Agent.TempDirectory)\WebAppContent\\"'
-    platform: 'Any CPU'
-    configuration: 'Release'
-    clean: true
-    maximumCpuCount: true
-    restoreNugetPackages: true
-    createLogFile: true
-    logFileVerbosity: detailed
-
-- task: ArchiveFiles@2
-  displayName: 'Archive Files'
-  inputs:
-    rootFolderOrFile: '$(Agent.TempDirectory)\WebAppContent'
-    includeRootFolder: false
-
-- task: VSTest@2
-  displayName: 'VsTest - testAssemblies'
-  inputs:
-    testAssemblyVer2: |
-     **\$(BuildConfiguration)\*test*.dll
-     !**\obj\**
-    platform: '$(BuildPlatform)'
-    configuration: '$(BuildConfiguration)'
-
-- task: AzureWebApp@1
-  displayName: 'Azure Web App Deploy: newfuncapp114'
-  inputs:
-    azureSubscription: 'newconn01'
-    appType: webApp
-    appName: 'newfuncapp114'
-    package: '$(build.artifactstagingdirectory)/**/*.zip'
-
-- task: PublishSymbols@2
-  displayName: 'Publish symbols path'
-  inputs:
-    SearchPattern: '**\bin\**\*.pdb'
-    PublishSymbols: false
-  continueOnError: true
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
-
-  pool:
   name: Azure Pipelines
   demands: java
 
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
 steps:
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    projects: 'WebApplication/*.sln'
+
 - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
   inputs:
-    SonarCloud: sonarcloud
-    organization: HarshitSharma55
-    projectKey: harshitsharma55
-    projectName: cicdevsecops
+    SonarCloud: newpipw
+    organization: harshitsharma55
+    projectKey: 'HarshitSharma55_cicdevsecopsdemo'
+    projectName: cicdevsecopsdemonew
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    projects: 'WebApplication/*.sln'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: test
+    projects: 'XUnitTestProject1/*.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+    testRunTitle: 'sample test'
 
 - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
 
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   displayName: 'Publish Quality Gate Result'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/TEST-*.xml'
+  inputs:
+    testResultsFormat: XUnit
+    testRunTitle: 'new test'
+
+- task: VSTest@2
+  displayName: 'VsTest - testAssemblies'
+  enabled: false
