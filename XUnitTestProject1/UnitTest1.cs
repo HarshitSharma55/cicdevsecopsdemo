@@ -6,9 +6,16 @@ namespace XUnitTestProject1
     public class UnitTest1
     {
         [Fact]
-        public void Test1()
+        public void trueTest()
         {
             Assert.True(true);
+
+        }
+
+        [Fact]
+        public void falsetest()
+        {
+            Assert.True(false);
 
         }
     }
