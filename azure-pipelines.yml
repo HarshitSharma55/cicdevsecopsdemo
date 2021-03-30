@@ -29,9 +29,9 @@ steps:
   displayName: 'Prepare analysis on SonarCloud'
   inputs:
     SonarCloud: $(SonarConnection)
-    organization: devsecopsonar
-    projectKey: devsecopssonar
-    projectName: devsecopsonar
+    organization: harshitsharma55
+    projectKey: 'HarshitSharma55_cicdevsecopsdemo'
+    projectName: cicdevsecopsdemonew
     extraProperties: |
      sonar.exclusions=**/obj/**,**/*.dll
      sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/**/coverage.opencover.xml
@@ -74,3 +74,13 @@ steps:
 
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   displayName: 'Publish Quality Gate Result'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/TEST-*.xml'
+  inputs:
+    testResultsFormat: XUnit
+    testRunTitle: 'new test'
+
+- task: VSTest@2
+  displayName: 'VsTest - testAssemblies'
+  enabled: true
