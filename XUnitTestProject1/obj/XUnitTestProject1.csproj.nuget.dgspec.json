@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HarshitSharma\\Source\\Repos\\HarshitSharma55\\cicdevsecopsdemo\\XUnitTestProject1\\XUnitTestProject1.csproj": {}
+    "C:\\Users\\HarshitSharma\\source\\repos\\HarshitSharma55\\cicdevsecopsdemonew\\XUnitTestProject1\\XUnitTestProject1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HarshitSharma\\Source\\Repos\\HarshitSharma55\\cicdevsecopsdemo\\XUnitTestProject1\\XUnitTestProject1.csproj": {
+    "C:\\Users\\HarshitSharma\\source\\repos\\HarshitSharma55\\cicdevsecopsdemonew\\XUnitTestProject1\\XUnitTestProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HarshitSharma\\Source\\Repos\\HarshitSharma55\\cicdevsecopsdemo\\XUnitTestProject1\\XUnitTestProject1.csproj",
+        "projectUniqueName": "C:\\Users\\HarshitSharma\\source\\repos\\HarshitSharma55\\cicdevsecopsdemonew\\XUnitTestProject1\\XUnitTestProject1.csproj",
         "projectName": "XUnitTestProject1",
-        "projectPath": "C:\\Users\\HarshitSharma\\Source\\Repos\\HarshitSharma55\\cicdevsecopsdemo\\XUnitTestProject1\\XUnitTestProject1.csproj",
+        "projectPath": "C:\\Users\\HarshitSharma\\source\\repos\\HarshitSharma55\\cicdevsecopsdemonew\\XUnitTestProject1\\XUnitTestProject1.csproj",
         "packagesPath": "C:\\Users\\HarshitSharma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HarshitSharma\\Source\\Repos\\HarshitSharma55\\cicdevsecopsdemo\\XUnitTestProject1\\obj\\",
+        "outputPath": "C:\\Users\\HarshitSharma\\source\\repos\\HarshitSharma55\\cicdevsecopsdemonew\\XUnitTestProject1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -29,6 +29,7 @@
         },
         "frameworks": {
           "netcoreapp2.1": {
+            "targetAlias": "netcoreapp2.1",
             "projectReferences": {}
           }
         },
@@ -40,12 +41,14 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[15.9.0, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
@@ -60,10 +63,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }
