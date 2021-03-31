@@ -20,7 +20,6 @@ C:\Users\HarshitSharma\source\repos\HarshitSharma55\cicdevsecopsdemonew\XUnitTes
 C:\Users\HarshitSharma\source\repos\HarshitSharma55\cicdevsecopsdemonew\XUnitTestProject1\bin\Debug\netcoreapp2.1\XUnitTestProject1.runtimeconfig.dev.json
 C:\Users\HarshitSharma\source\repos\HarshitSharma55\cicdevsecopsdemonew\XUnitTestProject1\bin\Debug\netcoreapp2.1\XUnitTestProject1.dll
 C:\Users\HarshitSharma\source\repos\HarshitSharma55\cicdevsecopsdemonew\XUnitTestProject1\bin\Debug\netcoreapp2.1\XUnitTestProject1.pdb
-C:\Users\HarshitSharma\source\repos\HarshitSharma55\cicdevsecopsdemonew\XUnitTestProject1\obj\Debug\netcoreapp2.1\XUnitTestProject1.csprojAssemblyReference.cache
 C:\Users\HarshitSharma\source\repos\HarshitSharma55\cicdevsecopsdemonew\XUnitTestProject1\obj\Debug\netcoreapp2.1\XUnitTestProject1.AssemblyInfoInputs.cache
 C:\Users\HarshitSharma\source\repos\HarshitSharma55\cicdevsecopsdemonew\XUnitTestProject1\obj\Debug\netcoreapp2.1\XUnitTestProject1.AssemblyInfo.cs
 C:\Users\HarshitSharma\source\repos\HarshitSharma55\cicdevsecopsdemonew\XUnitTestProject1\obj\Debug\netcoreapp2.1\XUnitTestProject1.csproj.CoreCompileInputs.cache
