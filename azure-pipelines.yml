@@ -24,7 +24,7 @@ steps:
 - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
   inputs:
-    SonarCloud: SonarConnection1
+    SonarCloud: SonarConnection
     organization: harshitsharma55
     projectKey: 'HarshitSharma55_cicdevsecopsdemo'
     projectName: cicdevsecopsdemonew
@@ -51,7 +51,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'myWebsiteName'
+    artifactName: 'myDemoWebsite'
 
 
 - task: DotNetCoreCLI@2
@@ -60,7 +60,8 @@ steps:
     command: test
     projects: 'XUnitTestProject1/*.csproj'
     arguments: '--configuration $(BuildConfiguration)'
-    testRunTitle: 'sample test'
+    testRunTitle: 'sampletest'
+
 
 - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
