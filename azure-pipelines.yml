@@ -24,10 +24,10 @@ steps:
 - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
   inputs:
-    SonarCloud: SonarConnection
-    organization: harshitsharma55
-    projectKey: 'HarshitSharma55_cicdevsecopsdemo'
-    projectName: cicdevsecopsdemonew
+    SonarCloud: $(sonarconnection)
+    organization: $(sonarorg)
+    projectKey: $(projectkey)
+    projectName: $(projectname)
 
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -51,7 +51,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'myDemoWebsite'
+    artifactName: $(artifactname)
 
 
 - task: DotNetCoreCLI@2
